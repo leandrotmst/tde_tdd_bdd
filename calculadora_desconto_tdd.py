@@ -8,6 +8,8 @@ class CalculadoraDescontoTDD:
     TAXA_FRETE = 15.0
 
     def calcular_pedido(self, valor_total: float, vip: bool = False) -> float:
+        if valor_total <= 0:
+            raise ValueError("Pedidos com valor total de itens zerado ou negativo são inválidos.")
         valor_apos_faixa = self._aplicar_desconto_faixa(valor_total)
         valor_apos_vip = self._aplicar_desconto_vip(valor_apos_faixa, vip)
         valor_final = self._aplicar_frete(valor_apos_vip)
