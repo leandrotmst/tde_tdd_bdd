@@ -27,6 +27,12 @@ class TestCalculadoraDescontoTDD(unittest.TestCase):
         self.assertEqual(self.calculadora.calcular_pedido(100.0, vip=False), 100.0)
         self.assertEqual(self.calculadora.calcular_pedido(100.0, vip=True), 110.0)
 
+    def test_regra5_pedido_zerado_ou_negativo_lanca_excecao(self):
+        with self.assertRaises(ValueError):
+            self.calculadora.calcular_pedido(0.0)
+        with self.assertRaises(ValueError):
+            self.calculadora.calcular_pedido(-50.0)
+
 
 if __name__ == "__main__":
     unittest.main()
