@@ -22,6 +22,9 @@ class TestCalculadoraDescontoTDD(unittest.TestCase):
         self.assertEqual(self.calculadora.calcular_pedido(600.0, vip=True), 513.0)
         self.assertEqual(self.calculadora.calcular_pedido(1500.0, vip=True), 1140.0)
 
+    def test_regra4_frete_fixo_15_para_valor_final_inferior_a_100(self):
+        self.assertEqual(self.calculadora.calcular_pedido(80.0), 95.0)
+
 
 if __name__ == "__main__":
     unittest.main()
