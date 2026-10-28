@@ -8,6 +8,8 @@ class CalculadoraDescontoTDD:
     def calcular_pedido(self, valor_total: float, vip: bool = False) -> float:
         valor_apos_faixa = self._aplicar_desconto_faixa(valor_total)
         valor_apos_vip = self._aplicar_desconto_vip(valor_apos_faixa, vip)
+        if valor_apos_vip < 100.0:
+            valor_apos_vip += 15.0
         return round(valor_apos_vip, 2)
 
     def _aplicar_desconto_faixa(self, valor_total: float) -> float:
