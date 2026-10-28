@@ -4,13 +4,14 @@ class CalculadoraDescontoTDD:
     LIMITE_DESCONTO_20 = 1000.0
     TAXA_DESCONTO_20 = 0.20
     TAXA_DESCONTO_VIP = 0.05
+    LIMITE_ISENCAO_FRETE = 100.0
+    TAXA_FRETE = 15.0
 
     def calcular_pedido(self, valor_total: float, vip: bool = False) -> float:
         valor_apos_faixa = self._aplicar_desconto_faixa(valor_total)
         valor_apos_vip = self._aplicar_desconto_vip(valor_apos_faixa, vip)
-        if valor_apos_vip < 100.0:
-            valor_apos_vip += 15.0
-        return round(valor_apos_vip, 2)
+        valor_final = self._aplicar_frete(valor_apos_vip)
+        return round(valor_final, 2)
 
     def _aplicar_desconto_faixa(self, valor_total: float) -> float:
         if valor_total > self.LIMITE_DESCONTO_20:
@@ -23,3 +24,8 @@ class CalculadoraDescontoTDD:
         if vip:
             return valor * (1 - self.TAXA_DESCONTO_VIP)
         return valor
+
+    def _aplicar_frete(self, valor_apos_descontos: float) -> float:
+        if valor_apos_descontos < self.LIMITE_ISENCAO_FRETE:
+            return valor_apos_descontos + self.TAXA_FRETE
+        return valor_apos_descontos
