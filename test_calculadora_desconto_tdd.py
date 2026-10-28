@@ -18,7 +18,9 @@ class TestCalculadoraDescontoTDD(unittest.TestCase):
         self.assertEqual(self.calculadora.calcular_pedido(1000.0), 900.0)
 
     def test_regra3_cliente_vip_ganha_5_porcento_desconto_adicional(self):
+        self.assertEqual(self.calculadora.calcular_pedido(200.0, vip=True), 190.0)
         self.assertEqual(self.calculadora.calcular_pedido(600.0, vip=True), 513.0)
+        self.assertEqual(self.calculadora.calcular_pedido(1500.0, vip=True), 1140.0)
 
 
 if __name__ == "__main__":
