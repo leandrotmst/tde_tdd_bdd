@@ -4,6 +4,8 @@ class CalculadoraDescontoTDD:
 
     def calcular_pedido(self, valor_total: float, vip: bool = False) -> float:
         valor_final = valor_total
-        if valor_total > self.LIMITE_DESCONTO_10:
+        if valor_total > 1000.0:
+            valor_final = valor_total * 0.80
+        elif valor_total > self.LIMITE_DESCONTO_10:
             valor_final = valor_total * (1 - self.TAXA_DESCONTO_10)
         return round(valor_final, 2)
