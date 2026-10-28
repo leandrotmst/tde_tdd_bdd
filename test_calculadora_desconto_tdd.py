@@ -12,6 +12,9 @@ class TestCalculadoraDescontoTDD(unittest.TestCase):
         self.assertEqual(self.calculadora.calcular_pedido(500.0), 500.0)
         self.assertEqual(self.calculadora.calcular_pedido(200.0), 200.0)
 
+    def test_regra2_compras_acima_de_1000_recebem_20_porcento_desconto(self):
+        self.assertEqual(self.calculadora.calcular_pedido(1500.0), 1200.0)
+
 
 if __name__ == "__main__":
     unittest.main()
