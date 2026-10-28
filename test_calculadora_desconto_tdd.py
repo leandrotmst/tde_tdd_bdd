@@ -32,6 +32,10 @@ class TestCalculadoraDescontoTDD(unittest.TestCase):
             self.calculadora.calcular_pedido(0.0)
         with self.assertRaises(ValueError):
             self.calculadora.calcular_pedido(-50.0)
+        with self.assertRaises(ValueError):
+            self.calculadora.calcular_compra(0, 100.0)
+        with self.assertRaises(ValueError):
+            self.calculadora.calcular_compra(2, -50.0)
 
 
 if __name__ == "__main__":
